@@ -1,0 +1,23 @@
+#Official Node.js image from the docker Hub
+FROM node:18
+
+#Working dir for the container
+WORKDIR /usr/src/app
+
+#Copy package.json
+COPY package*.json ./
+
+#Install the Project dependencies
+Run npm Install
+
+#Copy the rest of the application code
+COPY . .
+
+#Expose the port 
+Expose 3000
+
+#Define the running command
+CMD ["node", "index.js"]
+
+#Building the docker image: docker build -t [name of the work dir] .
+#Run the docker container: docker run -p 3000:3000 [work dir]
